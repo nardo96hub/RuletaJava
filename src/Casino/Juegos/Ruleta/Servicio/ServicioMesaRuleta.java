@@ -25,7 +25,7 @@ public class ServicioMesaRuleta extends Casino {
     }
 
    
-    private void inicializo() {
+    public void inicializo() {
         for (int i = 0; i < 3; i++) {
             m.inicializar((char) ('A' + i));
         }

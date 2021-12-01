@@ -26,6 +26,16 @@ public class Ruleta extends Casino {
     public ServicioMesaRuleta mesa() {
         return mesas.get(0);
     }
+    public ArrayList<ServicioMesaRuleta> mesadisponibles(){
+        ArrayList<ServicioMesaRuleta> disponible=new ArrayList<ServicioMesaRuleta>();
+        for (ServicioMesaRuleta m : mesas) {
+            if(m.getM().isDisponible()){
+                disponible.add(m);
+            }
+        }
+        
+        return disponible;
+    }
     
     //  Metodos para consola
     
@@ -89,6 +99,14 @@ public class Ruleta extends Casino {
         crearMesa(mesa,1);
        Mesa(buscarmesadisponible()).Juego();
     }*/
+
+    public ArrayList<ServicioMesaRuleta> getMesas() {
+        return mesas;
+    }
+
+    public void setMesas(ArrayList<ServicioMesaRuleta> mesas) {
+        this.mesas = mesas;
+    }
     
 
 }
