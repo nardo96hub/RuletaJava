@@ -5,6 +5,11 @@
  */
 package Casino.Juegos.Ruleta.InterfazGrafica;
 
+import Casino.Juegos.Ruleta.Sockets.Servidor;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Jorge
@@ -14,10 +19,29 @@ public class ServidorInterfaz extends javax.swing.JFrame {
     /**
      * Creates new form Servidor
      */
+    private Servidor ser=new Servidor();
     public ServidorInterfaz() {
+        
         initComponents();
+        ocultar();
+        
     }
-
+    private void ocultar(){
+        salir.setVisible(false);
+        cantmesa.setVisible(false);
+        cargarm.setVisible(false);
+        mesa.setVisible(false);
+        contable.setVisible(false);
+        tabla.setVisible(false);
+    }
+      private void ventanaErrorMesaLetras(KeyEvent evt) {//Valida que no se ingrese letras
+        char val = evt.getKeyChar();
+        if (Character.isLetter(val)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar Solo Numeros");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,26 +52,153 @@ public class ServidorInterfaz extends javax.swing.JFrame {
     private void initComponents() {
 
         panel = new javax.swing.JPanel();
+        server = new javax.swing.JLabel();
+        salir = new javax.swing.JButton();
+        iniciarserver = new javax.swing.JButton();
+        cantmesa = new javax.swing.JLabel();
+        mesa = new javax.swing.JTextField();
+        cargarm = new javax.swing.JButton();
+        contable = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(100, 100));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         panel.setBackground(new java.awt.Color(102, 0, 102));
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        server.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        server.setForeground(new java.awt.Color(252, 170, 71));
+        server.setText("Servidor");
+        panel.add(server, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 160, 40));
+
+        salir.setBackground(new java.awt.Color(255, 0, 0));
+        salir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        salir.setForeground(new java.awt.Color(255, 255, 255));
+        salir.setText("Salir");
+        panel.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
+
+        iniciarserver.setBackground(new java.awt.Color(255, 255, 255));
+        iniciarserver.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        iniciarserver.setForeground(new java.awt.Color(0, 0, 0));
+        iniciarserver.setText("Inicializar Servidor");
+        iniciarserver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciarserverActionPerformed(evt);
+            }
+        });
+        panel.add(iniciarserver, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
+
+        cantmesa.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cantmesa.setForeground(new java.awt.Color(0, 204, 204));
+        cantmesa.setText("Ingrese la cantidad de mesas de Ruleta");
+        panel.add(cantmesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 280, 20));
+
+        mesa.setText("0");
+        mesa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                mesaKeyTyped(evt);
+            }
+        });
+        panel.add(mesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 120, -1));
+
+        cargarm.setBackground(new java.awt.Color(51, 204, 0));
+        cargarm.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        cargarm.setForeground(new java.awt.Color(51, 51, 255));
+        cargarm.setText("Cargar Mesas");
+        cargarm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargarmActionPerformed(evt);
+            }
+        });
+        panel.add(cargarm, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 140, -1));
+
+        contable.setBackground(new java.awt.Color(102, 0, 102));
+        contable.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro de Movimiento de dinero Casino"));
+        contable.setForeground(new java.awt.Color(255, 255, 255));
+
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tabla);
+
+        javax.swing.GroupLayout contableLayout = new javax.swing.GroupLayout(contable);
+        contable.setLayout(contableLayout);
+        contableLayout.setHorizontalGroup(
+            contableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contableLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        contableLayout.setVerticalGroup(
+            contableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contableLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
+        );
+
+        panel.add(contable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 480, 280));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cargarmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarmActionPerformed
+       int cantmesas=Integer.parseInt(mesa.getText());
+        if(cantmesas>10|| cantmesas<-10||cantmesas==0){
+            JOptionPane.showMessageDialog(rootPane, "Ingrese un numero 0< nro <=10");
+        }else{
+            if(cantmesas<0){
+                cantmesas=-cantmesas;
+            }
+            
+            
+        }
+    }//GEN-LAST:event_cargarmActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       DefaultTableModel modelo=(DefaultTableModel)tabla.getModel();
+       modelo.addColumn("Dinero Casino");
+       modelo.addColumn("Ganancia/Perdida");
+       modelo.addColumn("Fecha");
+       
+       
+    }//GEN-LAST:event_formWindowOpened
+
+    private void iniciarserverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarserverActionPerformed
+        cantmesa.setVisible(true);
+        cargarm.setVisible(true);
+        mesa.setVisible(true);
+        salir.setVisible(true);
+        iniciarserver.setVisible(false);
+    }//GEN-LAST:event_iniciarserverActionPerformed
+
+    private void mesaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mesaKeyTyped
+        ventanaErrorMesaLetras(evt);
+    }//GEN-LAST:event_mesaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -86,6 +237,15 @@ public class ServidorInterfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cantmesa;
+    private javax.swing.JButton cargarm;
+    private javax.swing.JPanel contable;
+    private javax.swing.JButton iniciarserver;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField mesa;
     private javax.swing.JPanel panel;
+    private javax.swing.JButton salir;
+    private javax.swing.JLabel server;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,4 +1,8 @@
 package Casino.Juegos.Ruleta.Sockets;
-public class Servidor {
 
+import Casino.Juegos.Ruleta.Servicio.ServicioMesaRuleta;
+import java.util.ArrayList;
+
+public class Servidor {
+    private ArrayList<ServicioMesaRuleta> ruletas;
 }
