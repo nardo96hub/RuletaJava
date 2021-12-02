@@ -12,22 +12,29 @@ import javax.swing.*;
 
 public class ClienteInterfaz extends JFrame {
 
-   private Ruleta r=new Ruleta();
-    public ClienteInterfaz() {
-       
+   private Ruleta r;
+ public  ServidorInterfaz s;
+    public ClienteInterfaz(ServidorInterfaz ser) {
+       s=ser;
         initComponents();
         setVisible(true);
         ocultar();
         setTitle("Cliente");
         setResizable(false);
         setIconImage(new ImageIcon("src/Casino/Juegos/Ruleta/InterfazGrafica/imagen/cliente.png").getImage());
-       
-        r.crearMesa(8,0);
-        r.getMesas().get(1).getM().setDisponible(false);
+       setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+       r=s.getRuleta();
+       // r.getMesas().get(1).getM().setDisponible(false);
         
       
         
        
+    }
+    public ClienteInterfaz getCliente(){
+        return ClienteInterfaz.this;
+    }
+    public void setServidor(ServidorInterfaz a){
+        s=a;
     }
     public JButton getSalir(){
         return Salir;
@@ -209,7 +216,7 @@ public class ClienteInterfaz extends JFrame {
         ArrayList<ServicioMesaRuleta> mes=r.mesadisponibles();
         ArrayList<String> mesasdisponible =new ArrayList();
         for (ServicioMesaRuleta me : mes) {
-            mesasdisponible.add(""+me.getNumMesa());
+            mesasdisponible.add(""+(me.getNumMesa()+1));
   
         }
         agregarModel(mesasdisponible.toArray(new String[mesasdisponible.size()]));
@@ -233,7 +240,7 @@ public class ClienteInterfaz extends JFrame {
             if(cash<0){
                 cash=-cash;
             }
-            ServicioMesaRuleta tablero =r.getMesas().get(Integer.parseInt((String)mesas.getSelectedItem()));
+            ServicioMesaRuleta tablero =r.getMesas().get(Integer.parseInt((String)mesas.getSelectedItem())-1);
             tablero.getM().setDinero(cash);
             setVisible(false);
              java.awt.EventQueue.invokeLater(new Runnable() {
@@ -263,39 +270,7 @@ public class ClienteInterfaz extends JFrame {
         ventanaErrorDineroLetras(evt);
     }//GEN-LAST:event_dineroKeyTyped
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-       /* try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClienteInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClienteInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClienteInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClienteInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>*/
-
-        /* Create and display the form */
-        
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ClienteInterfaz();
-            }
-        });
-    }
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Mesa;

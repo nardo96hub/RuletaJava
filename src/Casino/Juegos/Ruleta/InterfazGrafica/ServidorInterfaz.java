@@ -5,34 +5,75 @@
  */
 package Casino.Juegos.Ruleta.InterfazGrafica;
 
-import Casino.Juegos.Ruleta.Sockets.Servidor;
+
+import Casino.Juegos.Ruleta.entidades.CasinoInforme;
+import Casino.Juegos.Ruleta.entidades.Ruleta;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Jorge
  */
-public class ServidorInterfaz extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Servidor
-     */
-    private Servidor ser=new Servidor();
+public class ServidorInterfaz extends JFrame {
+    private Ruleta r=new Ruleta();
+    
     public ServidorInterfaz() {
-        
+      
         initComponents();
+        setLocation(800,0);
         ocultar();
+        setVisible(true);
+        setIconImage(new ImageIcon("src/Casino/Juegos/Ruleta/InterfazGrafica/imagen/servidor.jpg").getImage());
+        //setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+       setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+       dinero.setEnabled(false);
+       
         
+    }
+    public ServidorInterfaz getServidor(){
+        return ServidorInterfaz.this;
+    }
+    public JTextField getJTextField(){
+        return dinero;
+    }
+    public JTable getJTable(){
+        return tabla;
+    }
+    public JPanel getPanelTable(){
+        return contable;
+    }
+    public Ruleta getRuleta(){
+        return r;
+    }
+     public void setRuleta(Ruleta ru){
+       r=ru;
+    }
+    public void agregarRegistroTabla(CasinoInforme ci){
+        
+        String formFecha="dd/MM/yy  hh:mm:ss";
+        SimpleDateFormat fecha=new SimpleDateFormat(formFecha);
+        Object fila[]={ci.getDineroCasino(),ci.getGanper(),ci.getNroMesa(),fecha.format(ci.getFecha())};
+        ((DefaultTableModel)tabla.getModel()).addRow(fila);
     }
     private void ocultar(){
         salir.setVisible(false);
         cantmesa.setVisible(false);
         cargarm.setVisible(false);
         mesa.setVisible(false);
-        contable.setVisible(false);
-        tabla.setVisible(false);
+       // contable.setVisible(false);
+        //tabla.setVisible(false);
+        textcasino.setVisible(false);
+        dinero.setVisible(false);
     }
       private void ventanaErrorMesaLetras(KeyEvent evt) {//Valida que no se ingrese letras
         char val = evt.getKeyChar();
@@ -61,6 +102,8 @@ public class ServidorInterfaz extends javax.swing.JFrame {
         contable = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
+        textcasino = new javax.swing.JLabel();
+        dinero = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(100, 100));
@@ -82,6 +125,11 @@ public class ServidorInterfaz extends javax.swing.JFrame {
         salir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         salir.setForeground(new java.awt.Color(255, 255, 255));
         salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
         panel.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
 
         iniciarserver.setBackground(new java.awt.Color(255, 255, 255));
@@ -152,6 +200,17 @@ public class ServidorInterfaz extends javax.swing.JFrame {
 
         panel.add(contable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 480, 280));
 
+        textcasino.setBackground(new java.awt.Color(0, 255, 0));
+        textcasino.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        textcasino.setForeground(new java.awt.Color(0, 51, 51));
+        textcasino.setText("Dinero Casino");
+        panel.add(textcasino, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 130, 30));
+
+        dinero.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        dinero.setForeground(new java.awt.Color(0, 0, 255));
+        dinero.setText("0");
+        panel.add(dinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 150, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -174,8 +233,14 @@ public class ServidorInterfaz extends javax.swing.JFrame {
             if(cantmesas<0){
                 cantmesas=-cantmesas;
             }
-            
-            
+           dinero.setText(""+r.getDineroCasino());
+         dinero.setVisible(true);
+         textcasino.setVisible(true);
+         r.crearMesa(cantmesas, 0);
+         cantmesa.setVisible(false);
+         mesa.setVisible(false);
+         cargarm.setVisible(false);
+           new ClienteInterfaz(ServidorInterfaz.this);
         }
     }//GEN-LAST:event_cargarmActionPerformed
 
@@ -183,9 +248,11 @@ public class ServidorInterfaz extends javax.swing.JFrame {
        DefaultTableModel modelo=(DefaultTableModel)tabla.getModel();
        modelo.addColumn("Dinero Casino");
        modelo.addColumn("Ganancia/Perdida");
+       modelo.addColumn("NroMesa");
        modelo.addColumn("Fecha");
+   
        
-       
+ 
     }//GEN-LAST:event_formWindowOpened
 
     private void iniciarserverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarserverActionPerformed
@@ -200,16 +267,22 @@ public class ServidorInterfaz extends javax.swing.JFrame {
         ventanaErrorMesaLetras(evt);
     }//GEN-LAST:event_mesaKeyTyped
 
+   
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+    
+     
+    }//GEN-LAST:event_salirActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+ /* public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+      /*  try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -227,19 +300,20 @@ public class ServidorInterfaz extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+*/
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+      /*  java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ServidorInterfaz().setVisible(true);
             }
-        });
-    }
+        });*/
+   /* }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cantmesa;
     private javax.swing.JButton cargarm;
     private javax.swing.JPanel contable;
+    private javax.swing.JTextField dinero;
     private javax.swing.JButton iniciarserver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField mesa;
@@ -247,5 +321,6 @@ public class ServidorInterfaz extends javax.swing.JFrame {
     private javax.swing.JButton salir;
     private javax.swing.JLabel server;
     private javax.swing.JTable tabla;
+    private javax.swing.JLabel textcasino;
     // End of variables declaration//GEN-END:variables
 }

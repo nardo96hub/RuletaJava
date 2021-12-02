@@ -1,4 +1,9 @@
 package Casino.Juegos.Ruleta.Sockets;
-public class ServidorHilo {
+public class ServidorHilo extends Thread{
 
+    
+    @Override
+    public void run(){
+        
+    }
 }

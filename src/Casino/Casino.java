@@ -10,14 +10,14 @@ public class Casino {
     }
 
     public Casino() {
-        dinero=(long)Math.pow(2,30);
+        dinero=(long)Math.pow(2,27);
     }
 
-    protected long getDineroCasino() {
+   public long getDineroCasino() {
         return dinero;
     }
 
-   protected void setDineroCasino(long dinero) {
+   public void setDineroCasino(long dinero) {
         this.dinero = dinero;
     }
 

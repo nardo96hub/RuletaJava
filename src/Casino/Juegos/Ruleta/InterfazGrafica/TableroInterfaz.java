@@ -6,6 +6,7 @@
 package Casino.Juegos.Ruleta.InterfazGrafica;
 
 import Casino.Juegos.Ruleta.Servicio.ServicioMesaRuleta;
+import Casino.Juegos.Ruleta.entidades.CasinoInforme;
 
 import java.awt.Color;
 import java.awt.Image;
@@ -13,6 +14,7 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import javax.swing.*;
 
 /**
@@ -23,7 +25,7 @@ public class TableroInterfaz extends javax.swing.JFrame {
 
     private ServicioMesaRuleta tablero;
     private StringBuilder n = new StringBuilder();
-    ClienteInterfaz c;
+   private ClienteInterfaz c;
 
     public TableroInterfaz(ServicioMesaRuleta m,ClienteInterfaz cliente) {
         c=cliente;
@@ -32,6 +34,7 @@ public class TableroInterfaz extends javax.swing.JFrame {
         VentanaParametros();
         fondos();
         checkbox();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
     }
 
@@ -558,18 +561,35 @@ public class TableroInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_retirarActionPerformed
 
     private void girarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_girarActionPerformed
+        long a,b;
+        a=tablero.getDineroCasino();
         tablero.JuegoTablero();
+        b=tablero.getDineroCasino();
+        if(a>b){
+            CasinoInforme ci=new CasinoInforme(tablero.getDineroCasino(),a-b, new Date(),tablero.getNumMesa() );
+            c.s.agregarRegistroTabla(ci);  
+        }else{
+            c.s.agregarRegistroTabla(new CasinoInforme(tablero.getDineroCasino(),b-a, new Date(),tablero.getNumMesa() ));
+        }
+        c.s.getJTable().setVisible(true);
+        c.s.getPanelTable().setVisible(true);
+        c.s.getJTextField().setText(""+tablero.getDineroCasino());
+        
         din.setText(""+tablero.getM().getDinero());
         salio.setVisible(true);
-
+        
         n.append(tablero.getM().getNumeroRuleta() + " ");
         numeros.setText(n.toString());
         seteoNumRuleta();
         apostar.setVisible(false);
         volverAportar.setVisible(false);
         opcion.setVisible(false);
+        
+        
+        
         seteoApuesta();
         
+        girar.setVisible(false);
         if(din.getText().equals("0")){
             c1.setVisible(false); c2.setVisible(false); c5.setVisible(false); c10.setVisible(false); c25.setVisible(false); c50.setVisible(false); c100.setVisible(false); c500.setVisible(false);
             f1.setVisible(false);  f2.setVisible(false);  f3.setVisible(false);  f4.setVisible(false);  f5.setVisible(false);  f6.setVisible(false);  f7.setVisible(false);  f8.setVisible(false);
