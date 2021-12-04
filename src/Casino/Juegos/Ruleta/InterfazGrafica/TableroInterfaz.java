@@ -1,26 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Casino.Juegos.Ruleta.InterfazGrafica;
 
 import Casino.Juegos.Ruleta.Servicio.ServicioMesaRuleta;
 import Casino.Juegos.Ruleta.entidades.CasinoInforme;
-
 import java.awt.Color;
 import java.awt.Image;
-
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import javax.swing.*;
 
-/**
- *
- * @author Jorge
- */
+
 public class TableroInterfaz extends javax.swing.JFrame {
 
     private ServicioMesaRuleta tablero;
@@ -63,10 +54,10 @@ public class TableroInterfaz extends javax.swing.JFrame {
     private void VentanaParametros() {//Establece medidas
         n.append("");
         String text = "";
-        //tablero.getM().setDinero(100000);
+   
         
         din.setText(text + tablero.getM().getDinero());
-        mesa.setText(text + tablero.getNumMesa());
+        mesa.setText(text + (tablero.getNumMesa()+1));
         mesa.setEnabled(false);
         din.setEnabled(false);
         numeros.setEnabled(false);
@@ -232,13 +223,7 @@ public class TableroInterfaz extends javax.swing.JFrame {
         }else{
             num.setForeground(Color.GREEN);
         }
-        
-        
-        
-        
         num.setVisible(true);
-        
-
     }
 
     private void ventanaErrorApuestaLetras(KeyEvent evt) {//Valida que no se ingrese letras
@@ -565,16 +550,15 @@ public class TableroInterfaz extends javax.swing.JFrame {
         a=tablero.getDineroCasino();
         tablero.JuegoTablero();
         b=tablero.getDineroCasino();
-        if(a>b){
-            CasinoInforme ci=new CasinoInforme(tablero.getDineroCasino(),a-b, new Date(),tablero.getNumMesa() );
-            c.s.agregarRegistroTabla(ci);  
-        }else{
-            c.s.agregarRegistroTabla(new CasinoInforme(tablero.getDineroCasino(),b-a, new Date(),tablero.getNumMesa() ));
+        if(b<0){
+            System.out.println("El casino se quedo sin fondos ");
+            System.exit(WIDTH);
         }
-        c.s.getJTable().setVisible(true);
-        c.s.getPanelTable().setVisible(true);
-        c.s.getJTextField().setText(""+tablero.getDineroCasino());
+        tablero.getM().getMesa().inicializarTablero();
+        CasinoInforme ci=new CasinoInforme(tablero.getDineroCasino(),b-a,tablero.getNumMesa()+1, new Date() );
         
+        c.EnviarInfoServer(ci);
+       
         din.setText(""+tablero.getM().getDinero());
         salio.setVisible(true);
         
@@ -690,7 +674,7 @@ public class TableroInterfaz extends javax.swing.JFrame {
 
     private void apostarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apostarActionPerformed
         verificacionApuesta();
-        //volverAportar.setVisible(true);
+        
 
 
     }//GEN-LAST:event_apostarActionPerformed

@@ -1,8 +1,9 @@
 package Casino;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Casino {
+public class Casino implements Serializable{
   protected long dinero;
   
     public Casino(long dinero) {//Por si quiero inicializar el dinero del casino por defecto se pondra dinero fijo

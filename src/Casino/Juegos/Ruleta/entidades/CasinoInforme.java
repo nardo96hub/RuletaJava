@@ -1,8 +1,9 @@
 package Casino.Juegos.Ruleta.entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CasinoInforme {
+public class CasinoInforme implements Serializable{
     private long dineroCasino;
     private long ganper;
     private Date fecha;
@@ -11,7 +12,7 @@ public class CasinoInforme {
     public CasinoInforme() {
     }
 
-    public CasinoInforme(long dineroCasino, long ganper, Date fecha, int nroMesa) {
+    public CasinoInforme(long dineroCasino, long ganper, int nroMesa ,Date fecha) {
         this.dineroCasino = dineroCasino;
         this.ganper = ganper;
         this.fecha = fecha;
@@ -48,6 +49,11 @@ public class CasinoInforme {
 
     public void setNroMesa(int nroMesa) {
         this.nroMesa = nroMesa;
+    }
+
+    @Override
+    public String toString() {
+        return "CasinoInforme{" + "dineroCasino=" + dineroCasino + ", ganper=" + ganper + ", fecha=" + fecha + ", nroMesa=" + nroMesa + '}';
     }
     
     

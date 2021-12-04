@@ -1,9 +1,10 @@
 package Casino.Juegos.Ruleta.entidades;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class MesaRuleta {
+public class MesaRuleta implements Serializable{
  private  Tablero mesa;
   private boolean disponible;
   private long dinero;

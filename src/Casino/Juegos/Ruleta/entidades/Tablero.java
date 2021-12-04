@@ -1,8 +1,9 @@
 package Casino.Juegos.Ruleta.entidades;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Tablero {
+public class Tablero implements Serializable{
 
     private int[] pleno = new int[37];//Guarda las apuestas de numeros plenos 
     private int[] Atriple = new int[6];//Guarda las apuestas triple de Docena y Columna

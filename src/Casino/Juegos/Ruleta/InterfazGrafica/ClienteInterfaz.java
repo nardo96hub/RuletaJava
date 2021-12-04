@@ -2,9 +2,10 @@
 package Casino.Juegos.Ruleta.InterfazGrafica;
 
 import Casino.Juegos.Ruleta.Servicio.ServicioMesaRuleta;
+import Casino.Juegos.Ruleta.Sockets.SocketCliente;
+import Casino.Juegos.Ruleta.entidades.CasinoInforme;
 import Casino.Juegos.Ruleta.entidades.Ruleta;
-import java.awt.Graphics;
-import java.awt.Image;
+
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -13,29 +14,23 @@ import javax.swing.*;
 public class ClienteInterfaz extends JFrame {
 
    private Ruleta r;
- public  ServidorInterfaz s;
-    public ClienteInterfaz(ServidorInterfaz ser) {
-       s=ser;
-        initComponents();
+
+ 
+
+ public ClienteInterfaz(){
+      initComponents();
         setVisible(true);
         ocultar();
         setTitle("Cliente");
         setResizable(false);
         setIconImage(new ImageIcon("src/Casino/Juegos/Ruleta/InterfazGrafica/imagen/cliente.png").getImage());
-       setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-       r=s.getRuleta();
-       // r.getMesas().get(1).getM().setDisponible(false);
-        
       
-        
-       
-    }
+ }
+ 
     public ClienteInterfaz getCliente(){
         return ClienteInterfaz.this;
     }
-    public void setServidor(ServidorInterfaz a){
-        s=a;
-    }
+  
     public JButton getSalir(){
         return Salir;
     }
@@ -54,25 +49,10 @@ public class ClienteInterfaz extends JFrame {
         Salir.setVisible(false);
         adios.setVisible(false);
     }
-   /* private void crearMesas(){
-        Ruleta r=new Ruleta();
-        r.crearMesa(4, 0);
-        for(int i=0;i<r.getMesas().size();i++){
-            JButton buton =new JButton();
-           buton.setText("Mesa"+r.getMesas().get(i).getNumMesa());
-            buton.setBounds(100, 200+50*i, 100, 50);
-            panel.add(buton);
-        }
-    }*/
-    
-      private void fondo(JLabel lb, String ruta) {//Agrega imagen en los JLabel
-        ImageIcon imagen;
-        Icon icono;
-        imagen = new ImageIcon(ruta);
-        icono = new ImageIcon(imagen.getImage().getScaledInstance(lb.getWidth(), lb.getHeight(), Image.SCALE_DEFAULT));
-        lb.setIcon(icono);
-    }
-
+  public void EnviarInfoServer(CasinoInforme c){
+      new SocketCliente(c,"a");
+  }
+   
        private void agregarModel(String[] p) {
         mesas.setModel(new javax.swing.DefaultComboBoxModel<>(p));
         mesas.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +70,7 @@ public class ClienteInterfaz extends JFrame {
         }
     }
   
+        //Metodo creado por Design
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -191,6 +172,11 @@ public class ClienteInterfaz extends JFrame {
         Salir.setBackground(new java.awt.Color(255, 0, 255));
         Salir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
         panel.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 160, 40));
 
         adios.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -213,16 +199,16 @@ public class ClienteInterfaz extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void vermesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vermesasActionPerformed
+        
+
         ArrayList<ServicioMesaRuleta> mes=r.mesadisponibles();
         ArrayList<String> mesasdisponible =new ArrayList();
         for (ServicioMesaRuleta me : mes) {
-            mesasdisponible.add(""+(me.getNumMesa()+1));
-  
+            mesasdisponible.add(""+(me.getNumMesa()+1)); 
         }
         agregarModel(mesasdisponible.toArray(new String[mesasdisponible.size()]));
         mesas.setVisible(true);
-        Mesa.setVisible(true);
-        
+        Mesa.setVisible(true);       
     }//GEN-LAST:event_vermesasActionPerformed
 
     private void unirmesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unirmesaActionPerformed
@@ -255,7 +241,14 @@ public class ClienteInterfaz extends JFrame {
     }//GEN-LAST:event_jugarActionPerformed
 
     private void conexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conexionActionPerformed
-       //Conectar con servidor socket ver mas tarde
+     
+        SocketCliente sc;
+        (sc=new SocketCliente(null,"0")).start();
+      
+        if(sc.getRuleta()!=null){
+            System.out.println("Recibi la ruleta del servidor en ver mesas disponibles");
+            r=sc.getRuleta();
+        }
        
        bienvenido.setVisible(true);
        vermesas.setVisible(true);
@@ -269,6 +262,10 @@ public class ClienteInterfaz extends JFrame {
     private void dineroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dineroKeyTyped
         ventanaErrorDineroLetras(evt);
     }//GEN-LAST:event_dineroKeyTyped
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+     System.exit(0);
+    }//GEN-LAST:event_SalirActionPerformed
 
  
 
