@@ -215,12 +215,10 @@ public class ServidorInterfaz extends JFrame {
         });
 
         panel.setBackground(new java.awt.Color(102, 0, 102));
-        panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         server.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         server.setForeground(new java.awt.Color(252, 170, 71));
         server.setText("Servidor");
-        panel.add(server, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 160, 40));
 
         salir.setBackground(new java.awt.Color(255, 0, 0));
         salir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -231,7 +229,6 @@ public class ServidorInterfaz extends JFrame {
                 salirActionPerformed(evt);
             }
         });
-        panel.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
 
         iniciarserver.setBackground(new java.awt.Color(255, 255, 255));
         iniciarserver.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -242,12 +239,10 @@ public class ServidorInterfaz extends JFrame {
                 iniciarserverActionPerformed(evt);
             }
         });
-        panel.add(iniciarserver, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
 
         cantmesa.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         cantmesa.setForeground(new java.awt.Color(0, 204, 204));
         cantmesa.setText("Ingrese la cantidad de mesas de Ruleta");
-        panel.add(cantmesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 280, 20));
 
         mesa.setText("0");
         mesa.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -255,7 +250,6 @@ public class ServidorInterfaz extends JFrame {
                 mesaKeyTyped(evt);
             }
         });
-        panel.add(mesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 120, -1));
 
         cargarm.setBackground(new java.awt.Color(51, 204, 0));
         cargarm.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -266,7 +260,6 @@ public class ServidorInterfaz extends JFrame {
                 cargarmActionPerformed(evt);
             }
         });
-        panel.add(cargarm, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 140, -1));
 
         contable.setBackground(new java.awt.Color(102, 0, 102));
         contable.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro de Movimiento de dinero Casino"));
@@ -299,18 +292,14 @@ public class ServidorInterfaz extends JFrame {
                 .addGap(38, 38, 38))
         );
 
-        panel.add(contable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 480, 280));
-
         textcasino.setBackground(new java.awt.Color(0, 255, 0));
         textcasino.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         textcasino.setForeground(new java.awt.Color(0, 51, 51));
         textcasino.setText("Dinero Casino");
-        panel.add(textcasino, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 130, 30));
 
         dinero.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         dinero.setForeground(new java.awt.Color(0, 0, 255));
         dinero.setText("0");
-        panel.add(dinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 150, -1));
 
         guardar.setBackground(new java.awt.Color(102, 102, 0));
         guardar.setForeground(new java.awt.Color(0, 0, 0));
@@ -320,17 +309,76 @@ public class ServidorInterfaz extends JFrame {
                 guardarActionPerformed(evt);
             }
         });
-        panel.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 280, -1));
+
+        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(panelLayout);
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(server, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(iniciarserver)
+                .addGap(19, 19, 19)
+                .addComponent(salir))
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cantmesa, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addComponent(mesa, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(cargarm, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(textcasino, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dinero, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addComponent(contable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(server, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(iniciarserver)
+                            .addComponent(salir))))
+                .addGap(15, 15, 15)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addComponent(cantmesa, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(mesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cargarm)))
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addComponent(textcasino, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(dinero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(13, 13, 13)
+                .addComponent(contable, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(guardar))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

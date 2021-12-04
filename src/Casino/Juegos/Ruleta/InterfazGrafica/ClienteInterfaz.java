@@ -5,10 +5,15 @@ import Casino.Juegos.Ruleta.Servicio.ServicioMesaRuleta;
 import Casino.Juegos.Ruleta.Sockets.SocketCliente;
 import Casino.Juegos.Ruleta.entidades.CasinoInforme;
 import Casino.Juegos.Ruleta.entidades.Ruleta;
+import java.awt.event.ActionEvent;
 
+
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.*;
+import org.netbeans.lib.awtextra.AbsoluteConstraints;
+
 
 
 public class ClienteInterfaz extends JFrame {
@@ -52,11 +57,11 @@ public class ClienteInterfaz extends JFrame {
   public void EnviarInfoServer(CasinoInforme c){
       new SocketCliente(c,"a");
   }
-   
+   //java.awt.event.
        private void agregarModel(String[] p) {
-        mesas.setModel(new javax.swing.DefaultComboBoxModel<>(p));
-        mesas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        mesas.setModel(new DefaultComboBoxModel<>(p));
+        mesas.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 mesasActionPerformed(evt);
             }
         });
@@ -71,7 +76,7 @@ public class ClienteInterfaz extends JFrame {
     }
   
         //Metodo creado por Design
-    @SuppressWarnings("unchecked")
+   // @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -94,13 +99,11 @@ public class ClienteInterfaz extends JFrame {
         setMinimumSize(new java.awt.Dimension(100, 100));
 
         panel.setBackground(new java.awt.Color(0, 255, 255));
-        panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cliente.setBackground(new java.awt.Color(0, 0, 255));
         cliente.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 1, 36)); // NOI18N
         cliente.setForeground(new java.awt.Color(0, 0, 0));
         cliente.setText("Cliente");
-        panel.add(cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 40));
 
         conexion.setBackground(new java.awt.Color(0, 0, 255));
         conexion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -112,12 +115,10 @@ public class ClienteInterfaz extends JFrame {
                 conexionActionPerformed(evt);
             }
         });
-        panel.add(conexion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 190, 40));
 
         bienvenido.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         bienvenido.setForeground(new java.awt.Color(153, 102, 0));
         bienvenido.setText("Bienvenido a las mesas de Ruleta, eliga una mesa donde jugar");
-        panel.add(bienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 580, 50));
 
         vermesas.setText("Ver Mesas Disponibles");
         vermesas.addActionListener(new java.awt.event.ActionListener() {
@@ -125,12 +126,10 @@ public class ClienteInterfaz extends JFrame {
                 vermesasActionPerformed(evt);
             }
         });
-        panel.add(vermesas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 170, -1));
 
         Mesa.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Mesa.setForeground(new java.awt.Color(255, 0, 0));
         Mesa.setText("Mesas:");
-        panel.add(Mesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 50, 40));
 
         mesas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         mesas.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +137,6 @@ public class ClienteInterfaz extends JFrame {
                 mesasActionPerformed(evt);
             }
         });
-        panel.add(mesas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
 
         unirmesa.setText("Usar mesa");
         unirmesa.addActionListener(new java.awt.event.ActionListener() {
@@ -146,12 +144,10 @@ public class ClienteInterfaz extends JFrame {
                 unirmesaActionPerformed(evt);
             }
         });
-        panel.add(unirmesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 100, 50));
 
         ingresedin.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ingresedin.setForeground(new java.awt.Color(51, 153, 0));
         ingresedin.setText("Ingrese dinero que desea jugar");
-        panel.add(ingresedin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 230, 30));
 
         jugar.setText("Jugar");
         jugar.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +155,6 @@ public class ClienteInterfaz extends JFrame {
                 jugarActionPerformed(evt);
             }
         });
-        panel.add(jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 80, 30));
 
         dinero.setText("0");
         dinero.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -167,7 +162,6 @@ public class ClienteInterfaz extends JFrame {
                 dineroKeyTyped(evt);
             }
         });
-        panel.add(dinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 110, -1));
 
         Salir.setBackground(new java.awt.Color(255, 0, 255));
         Salir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -177,12 +171,75 @@ public class ClienteInterfaz extends JFrame {
                 SalirActionPerformed(evt);
             }
         });
-        panel.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 160, 40));
 
         adios.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         adios.setForeground(new java.awt.Color(51, 51, 255));
         adios.setText("Gracias por Jugar,Adios.");
-        panel.add(adios, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 200, -1));
+
+        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(panelLayout);
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(conexion, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(350, 350, 350)
+                        .addComponent(adios, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(350, 350, 350)
+                        .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(vermesas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(Mesa)
+                .addGap(0, 0, 0)
+                .addComponent(mesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(unirmesa, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(ingresedin, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(dinero, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jugar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(conexion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(bienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(adios)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Mesa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(unirmesa, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(vermesas)
+                            .addComponent(mesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(30, 30, 30)
+                .addComponent(ingresedin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dinero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jugar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -192,7 +249,7 @@ public class ClienteInterfaz extends JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
