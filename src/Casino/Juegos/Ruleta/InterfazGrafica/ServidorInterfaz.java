@@ -65,7 +65,7 @@ public class ServidorInterfaz extends JFrame {
                         din = ((CasinoInforme) p).getDineroCasino();
                     }
                     }catch(EOFException ex){
-                        
+                        System.out.println("Se encontro fin de archivo");
                     }
                     
 
@@ -74,11 +74,14 @@ public class ServidorInterfaz extends JFrame {
             } catch(EOFException ex){
               //Fin de archivo
             }catch (FileNotFoundException ex) {
-                Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Error "+ex.getMessage());
+                //Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
-                Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+                  System.out.println("Error "+ex.getMessage());
+                //Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+                  System.out.println("Error "+ex.getMessage());
+               // Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 if (informe != null) {
                     try {

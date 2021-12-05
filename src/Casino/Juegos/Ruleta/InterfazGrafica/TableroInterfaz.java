@@ -294,32 +294,26 @@ public class TableroInterfaz extends javax.swing.JFrame {
 
         panel1.setBackground(new java.awt.Color(13, 124, 0));
         panel1.setMinimumSize(new java.awt.Dimension(760, 500));
-        panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         numeros.setBackground(new java.awt.Color(0, 0, 0));
         numeros.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         numeros.setForeground(new java.awt.Color(255, 255, 255));
         numeros.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        panel1.add(numeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 970, 40));
 
         rul.setBackground(new java.awt.Color(204, 153, 0));
         rul.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         rul.setForeground(new java.awt.Color(255, 255, 255));
         rul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        panel1.add(rul, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 140));
 
         tab.setBackground(new java.awt.Color(255, 255, 255));
-        panel1.add(tab, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 370, 230));
 
         nroS.setFont(new java.awt.Font("Dutch801 Rm BT", 1, 18)); // NOI18N
         nroS.setForeground(new java.awt.Color(230, 255, 16));
         nroS.setText("Numeros que salieron:");
-        panel1.add(nroS, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 240, 30));
 
         Cash.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
         Cash.setForeground(new java.awt.Color(0, 0, 255));
         Cash.setText("Dinero:");
-        panel1.add(Cash, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 470, 90, -1));
 
         din.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         din.setForeground(new java.awt.Color(255, 102, 0));
@@ -330,7 +324,6 @@ public class TableroInterfaz extends javax.swing.JFrame {
                 dinActionPerformed(evt);
             }
         });
-        panel1.add(din, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 470, 170, -1));
 
         retirar.setBackground(new java.awt.Color(255, 0, 0));
         retirar.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
@@ -341,7 +334,6 @@ public class TableroInterfaz extends javax.swing.JFrame {
                 retirarActionPerformed(evt);
             }
         });
-        panel1.add(retirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 150, 50));
 
         girar.setBackground(new java.awt.Color(51, 255, 51));
         girar.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
@@ -352,29 +344,18 @@ public class TableroInterfaz extends javax.swing.JFrame {
                 girarActionPerformed(evt);
             }
         });
-        panel1.add(girar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 470, 200, 50));
 
         nromesa.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         nromesa.setForeground(new java.awt.Color(67, 8, 10));
         nromesa.setText("Mesa Nº:");
-        panel1.add(nromesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, 70, 30));
 
         mesa.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         mesa.setForeground(new java.awt.Color(255, 204, 0));
         mesa.setDisabledTextColor(new java.awt.Color(255, 0, 0));
-        panel1.add(mesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 10, 30, 30));
-        panel1.add(f1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 50, 30));
-        panel1.add(f2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 50, 30));
-        panel1.add(f3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 170, 50, 30));
 
         f4.setBackground(new java.awt.Color(204, 0, 0));
-        panel1.add(f4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 50, 30));
-        panel1.add(f5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, 50, 30));
-        panel1.add(f6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 50, 30));
-        panel1.add(f7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 50, 30));
 
         f8.setPreferredSize(new java.awt.Dimension(30, 15));
-        panel1.add(f8, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, 50, 30));
 
         c1.setText("0");
         c1.addActionListener(new java.awt.event.ActionListener() {
@@ -387,7 +368,6 @@ public class TableroInterfaz extends javax.swing.JFrame {
                 c1KeyTyped(evt);
             }
         });
-        panel1.add(c1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 50, 30));
 
         c2.setText("0");
         c2.addActionListener(new java.awt.event.ActionListener() {
@@ -400,7 +380,6 @@ public class TableroInterfaz extends javax.swing.JFrame {
                 c2KeyTyped(evt);
             }
         });
-        panel1.add(c2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 50, 30));
 
         c5.setText("0");
         c5.addActionListener(new java.awt.event.ActionListener() {
@@ -413,7 +392,6 @@ public class TableroInterfaz extends javax.swing.JFrame {
                 c5KeyTyped(evt);
             }
         });
-        panel1.add(c5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 50, 30));
 
         c10.setText("0");
         c10.addActionListener(new java.awt.event.ActionListener() {
@@ -426,7 +404,6 @@ public class TableroInterfaz extends javax.swing.JFrame {
                 c10KeyTyped(evt);
             }
         });
-        panel1.add(c10, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, 50, 30));
 
         c25.setText("0");
         c25.addActionListener(new java.awt.event.ActionListener() {
@@ -439,7 +416,6 @@ public class TableroInterfaz extends javax.swing.JFrame {
                 c25KeyTyped(evt);
             }
         });
-        panel1.add(c25, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 50, 30));
 
         c50.setText("0");
         c50.addActionListener(new java.awt.event.ActionListener() {
@@ -452,7 +428,6 @@ public class TableroInterfaz extends javax.swing.JFrame {
                 c50KeyTyped(evt);
             }
         });
-        panel1.add(c50, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 50, 30));
 
         c100.setText("0");
         c100.addActionListener(new java.awt.event.ActionListener() {
@@ -465,7 +440,6 @@ public class TableroInterfaz extends javax.swing.JFrame {
                 c100KeyTyped(evt);
             }
         });
-        panel1.add(c100, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, 50, 30));
 
         c500.setText("0");
         c500.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -473,7 +447,6 @@ public class TableroInterfaz extends javax.swing.JFrame {
                 c500KeyTyped(evt);
             }
         });
-        panel1.add(c500, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, 50, 30));
 
         volverAportar.setBackground(new java.awt.Color(97, 56, 31));
         volverAportar.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
@@ -484,7 +457,6 @@ public class TableroInterfaz extends javax.swing.JFrame {
                 volverAportarActionPerformed(evt);
             }
         });
-        panel1.add(volverAportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 350, 190, -1));
 
         apuesta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Numeros", "Docena", "Columna", "[1,18]  [19,36]", "Par e Impar", "Color" }));
         apuesta.addActionListener(new java.awt.event.ActionListener() {
@@ -492,9 +464,6 @@ public class TableroInterfaz extends javax.swing.JFrame {
                 apuestaActionPerformed(evt);
             }
         });
-        panel1.add(apuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 90, -1));
-
-        panel1.add(opcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 190, -1, -1));
 
         apostar.setBackground(new java.awt.Color(0, 255, 255));
         apostar.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
@@ -505,38 +474,206 @@ public class TableroInterfaz extends javax.swing.JFrame {
                 apostarActionPerformed(evt);
             }
         });
-        panel1.add(apostar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 200, 90, -1));
 
         salio.setBackground(new java.awt.Color(153, 0, 153));
         salio.setFont(new java.awt.Font("MS UI Gothic", 1, 36)); // NOI18N
         salio.setForeground(new java.awt.Color(242, 245, 42));
         salio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         salio.setText("Salio el numero:");
-        panel1.add(salio, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 290, 90));
 
         num.setBackground(new java.awt.Color(204, 0, 0));
         num.setFont(new java.awt.Font("MS UI Gothic", 1, 36)); // NOI18N
-        panel1.add(num, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 70, 40, 60));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(13, 1, 207));
         jLabel1.setText("Ingrese donde Apostar");
-        panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 150, 200, 30));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(13, 1, 207));
         jLabel2.setText("Ingrese Su Apuesta");
-        panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 180, 30));
+
+        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
+        panel1.setLayout(panel1Layout);
+        panel1Layout.setHorizontalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rul, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(nroS, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(50, 50, 50)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(430, 430, 430)
+                        .addComponent(nromesa, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(mesa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel1Layout.createSequentialGroup()
+                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panel1Layout.createSequentialGroup()
+                                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(panel1Layout.createSequentialGroup()
+                                                .addComponent(f1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(10, 10, 10)
+                                                .addComponent(f2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(f4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panel1Layout.createSequentialGroup()
+                                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(panel1Layout.createSequentialGroup()
+                                                .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(70, 70, 70)
+                                                .addComponent(c5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(panel1Layout.createSequentialGroup()
+                                                .addGap(60, 60, 60)
+                                                .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(f3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(c10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(20, 20, 20)
+                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(panel1Layout.createSequentialGroup()
+                                        .addComponent(apuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(20, 20, 20)
+                                        .addComponent(opcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(panel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(salio, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(num, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(10, 10, 10)
+                        .addComponent(apostar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addComponent(f5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(f6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(f7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(f8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addComponent(c25, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(c50, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(c100, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(c500, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(volverAportar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(numeros, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(girar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(280, 280, 280)
+                .addComponent(retirar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(Cash, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(din, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panel1Layout.setVerticalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rul, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panel1Layout.createSequentialGroup()
+                                .addGap(130, 130, 130)
+                                .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(20, 20, 20)
+                        .addComponent(nroS, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nromesa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mesa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel1Layout.createSequentialGroup()
+                                .addGap(160, 160, 160)
+                                .addComponent(apostar))
+                            .addGroup(panel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(salio, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(num, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(1, 1, 1)
+                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panel1Layout.createSequentialGroup()
+                                        .addGap(40, 40, 40)
+                                        .addComponent(f4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panel1Layout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(10, 10, 10)
+                                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(apuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(opcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(panel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(panel1Layout.createSequentialGroup()
+                                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(f1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(f2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                                                        .addGap(4, 4, 4)
+                                                        .addComponent(f3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(c5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(c10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addGroup(panel1Layout.createSequentialGroup()
+                                                .addGap(37, 37, 37)
+                                                .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                        .addGap(19, 19, 19)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(f5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(f6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(f7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(f8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(c25, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(c50, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(c100, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(c500, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addComponent(volverAportar)))
+                .addComponent(numeros, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(retirar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(girar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Cash)
+                            .addComponent(din, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
