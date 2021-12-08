@@ -6,8 +6,6 @@ import Casino.Juegos.Ruleta.Sockets.SocketCliente;
 import Casino.Juegos.Ruleta.entidades.CasinoInforme;
 import Casino.Juegos.Ruleta.entidades.Ruleta;
 import java.awt.event.ActionEvent;
-
-
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -23,11 +21,12 @@ public class ClienteInterfaz extends JFrame {
  
 
  public ClienteInterfaz(){
-      initComponents();
+      initComponents();//inicializo componentes se generaron con Design 
         setVisible(true);
-        ocultar();
+        ocultar();//Oculto componentes 
         setTitle("Cliente");
-        setResizable(false);
+        setResizable(false);//Bloqueo que se cambie tamaño de ventana
+        
         setIconImage(new ImageIcon("src/Casino/Juegos/Ruleta/InterfazGrafica/imagen/cliente.png").getImage());
       
  }
@@ -57,7 +56,7 @@ public class ClienteInterfaz extends JFrame {
   public void EnviarInfoServer(CasinoInforme c){
       new SocketCliente(c,"a");
   }
-   //java.awt.event.
+        //Recibo una lista de String y lo agrego al ComboBox
        private void agregarModel(String[] p) {
         mesas.setModel(new DefaultComboBoxModel<>(p));
         mesas.addActionListener(new ActionListener() {
@@ -259,8 +258,8 @@ public class ClienteInterfaz extends JFrame {
     private void vermesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vermesasActionPerformed
         
 
-        ArrayList<ServicioMesaRuleta> mes=r.mesadisponibles();
-        ArrayList<String> mesasdisponible =new ArrayList();
+        ArrayList<ServicioMesaRuleta> mes=r.mesadisponibles();//Recibo todas las mesas disponibles
+        ArrayList<String> mesasdisponible =new ArrayList();//creo un arreglo que contiene solo numero de mesa
         for (ServicioMesaRuleta me : mes) {
             mesasdisponible.add(""+(me.getNumMesa()+1)); 
         }
@@ -276,7 +275,7 @@ public class ClienteInterfaz extends JFrame {
     }//GEN-LAST:event_unirmesaActionPerformed
 
     private void jugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jugarActionPerformed
-        if(dinero.getText().isEmpty()||dinero.getText().equals("0")){
+        if(dinero.getText().isEmpty()||dinero.getText().equals("0")){//Si no ingreso dinero me pide ingresa
              JOptionPane.showMessageDialog(rootPane, "Ingresar Dinero");
             
         }else{
@@ -284,8 +283,10 @@ public class ClienteInterfaz extends JFrame {
             if(cash<0){
                 cash=-cash;
             }
+            //getSelectedItem tiene un valor de 1 a n por eso le resto 1 para obtener el numero de mesa 
             ServicioMesaRuleta tablero =r.getMesas().get(Integer.parseInt((String)mesas.getSelectedItem())-1);
             tablero.getM().setDinero(cash);
+            tablero.getM().setDisponible(false);
             setVisible(false);
              java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -301,7 +302,7 @@ public class ClienteInterfaz extends JFrame {
     private void conexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conexionActionPerformed
      
         SocketCliente sc;
-        (sc=new SocketCliente(null,"0")).start();
+        (sc=new SocketCliente(null,"0")).start();//Creo la conexion con el server y genero un nuevo hilo
       
         if(sc.getRuleta()!=null){
             System.out.println("Recibi la ruleta del servidor en ver mesas disponibles");

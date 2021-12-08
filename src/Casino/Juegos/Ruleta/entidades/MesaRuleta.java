@@ -1,23 +1,22 @@
 package Casino.Juegos.Ruleta.entidades;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Objects;
 
-public class MesaRuleta implements Serializable{
- private  Tablero mesa;
-  private boolean disponible;
-  private long dinero;
-  private int numeroRuleta;
-  
+//Clase que simula maquina virtual de ruleta
+public class MesaRuleta implements Serializable {
+
+    private Tablero mesa;
+    private boolean disponible;
+    private long dinero;//dinero del jugador
+    private int numeroRuleta;
 
     public MesaRuleta() {
-        mesa=new Tablero();
+        mesa = new Tablero();
         mesa.inicializarTablero();
-        disponible=true;
-        
-      
-        dinero=0;
+        disponible = true;
+
+        dinero = 0;
     }
 
     public Tablero getMesa() {
@@ -90,22 +89,16 @@ public class MesaRuleta implements Serializable{
         return "MesaRuleta{" + "mesa=" + mesa + ", disponible=" + disponible + ", dinero=" + dinero + ", numeroRuleta=" + numeroRuleta + '}';
     }
 
-  
+    //Inicializo mesa
+    public void inicializar(char o) //A=inicializa tablero,B=Inicializa dinero,C=Disponibilidad
+    {
+        if (o == 'A') {
+            mesa.inicializarTablero();
+        } else if (o == 'B') {
+            dinero = 0;
+        } else {
+            disponible = true;
+        }
+    }
 
-  
-   
-    
-  public void inicializar(char o)
-//A=inicializa tablero,B=Inicializa dinero,C=Disponibilidad
-  {
-      if(o=='A'){
-          mesa.inicializarTablero();
-      }else if(o=='B'){
-       dinero=0;
-      }
-      else disponible=true;
-  }
-  
-  
-  
 }

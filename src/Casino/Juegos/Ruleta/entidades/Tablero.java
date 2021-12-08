@@ -2,8 +2,9 @@ package Casino.Juegos.Ruleta.entidades;
 
 import java.io.Serializable;
 import java.util.Arrays;
+//Clase que simula tablero de ruleta
 
-public class Tablero implements Serializable{
+public class Tablero implements Serializable {
 
     private int[] pleno = new int[37];//Guarda las apuestas de numeros plenos 
     private int[] Atriple = new int[6];//Guarda las apuestas triple de Docena y Columna
@@ -79,48 +80,6 @@ public class Tablero implements Serializable{
     @Override
     public String toString() {
         return "Tablero{" + "pleno=" + pleno + ", Atriple=" + Atriple + ", Adoble=" + Adoble + '}';
-    }
-
-    public void mostrarTablero() {
-        System.out.println("\n\nEl contenido del tablero es el siguiente:");
-        System.out.println("*******Pleno*******");
-        for (int i = 0; i < pleno.length; i++) {
-            System.out.println("Nro " + i + " Apuesta:" + pleno[i]);
-
-        }
-        System.out.println("\n*******Apuestas Triple*******");
-        for (int i = 0; i < Atriple.length; i++) {
-            if (i < 3) {
-                System.out.println("Doc" + (i + 1) + " Apuesta:" + Atriple[i]);
-            } else {
-                System.out.println("Col" + (i - 2) + " Apuesta:" + Atriple[i]);
-            }
-        }
-        System.out.println("\n*******Apuestas Doble*******");
-        for (int i = 0; i < Adoble.length; i++) {
-            switch (i) {
-                case 0:
-                    System.out.println("[1,18] Apuesta:"+Adoble[i]);
-                    break;
-                case 1:
-                    System.out.println("[19,36] Apuesta:"+Adoble[i]);
-                    break;
-                case 2:
-                    System.out.println("Par Apuesta:"+Adoble[i]);
-                    break;
-                case 3:
-                    System.out.println("Impar Apuesta:"+Adoble[i]);
-                    break;
-                case 4:
-                    System.out.println("Color Rojo_ Apuesta:"+Adoble[i]);
-                    break;
-                case 5:
-                    System.out.println("Color Negro_ Apuesta:"+Adoble[i]);
-                    break;
-
-            }
-        }
-        System.out.println("\n\n");
     }
 
 }

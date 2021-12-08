@@ -3,7 +3,9 @@ package Casino.Juegos.Ruleta.entidades;
 import java.io.Serializable;
 import java.util.Date;
 
-public class CasinoInforme implements Serializable{
+//Esta clase se encarga de enviar al servidor el informe de la jugada de un cliente
+public class CasinoInforme implements Serializable {
+
     private long dineroCasino;
     private long ganper;
     private Date fecha;
@@ -12,7 +14,7 @@ public class CasinoInforme implements Serializable{
     public CasinoInforme() {
     }
 
-    public CasinoInforme(long dineroCasino, long ganper, int nroMesa ,Date fecha) {
+    public CasinoInforme(long dineroCasino, long ganper, int nroMesa, Date fecha) {
         this.dineroCasino = dineroCasino;
         this.ganper = ganper;
         this.fecha = fecha;
@@ -55,7 +57,5 @@ public class CasinoInforme implements Serializable{
     public String toString() {
         return "CasinoInforme{" + "dineroCasino=" + dineroCasino + ", ganper=" + ganper + ", fecha=" + fecha + ", nroMesa=" + nroMesa + '}';
     }
-    
-    
-    
+
 }

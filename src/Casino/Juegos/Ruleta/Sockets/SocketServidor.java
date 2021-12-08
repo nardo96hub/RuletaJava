@@ -21,23 +21,26 @@ public class SocketServidor extends Thread implements Serializable {
     private ServidorInterfaz sisf;
 
     public SocketServidor(Ruleta r, ServidorInterfaz sisf) {
-         this.ruleta = r;
-            this.sisf = sisf;
+        this.ruleta = r;
+        this.sisf = sisf;
     }
-    public void run(){
+
+    public void run() {
         try {
-           
+
             Socket s = null;
-            ServerSocket ss = new ServerSocket(5000);
+            ServerSocket ss = new ServerSocket(5000);//Creo el servidor 
             System.out.println("Servidor Iniciado");
-            while (true) {
-                s = ss.accept();
-                (new Cliente(s, SocketServidor.this, sisf)).start();
+            while (true) {//Genero bucle infinito a la espera de nuevos clientes
+                s = ss.accept();//Recibo un cliente
+                (new Cliente(s, SocketServidor.this, sisf)).start();//Genero un nuevo hilo  aparte 
             }
         } catch (IOException ex) {
-            Logger.getLogger(SocketServidor.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+           // Logger.getLogger(SocketServidor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public Ruleta getRuleta() {
         return ruleta;
     }
@@ -61,8 +64,7 @@ public class SocketServidor extends Thread implements Serializable {
         private ObjectOutputStream oos = null;
         private SocketServidor ser;
         private ServidorInterfaz sisf;
-        private DataInputStream in=null;
-        
+        private DataInputStream in = null;
 
         public Cliente(Socket s, SocketServidor ser, ServidorInterfaz sisf) {
             this.s = s;
@@ -72,35 +74,35 @@ public class SocketServidor extends Thread implements Serializable {
 
         public void run() {
             try {
-   
-                System.out.println("Se registro una conexion al server hola");
-                
-                in=new DataInputStream(s.getInputStream());
-                String envio=in.readUTF();
-                if(envio.equals("0")){
-                     System.out.println("Intento enviar ruleta al Cliente?");
-                
-                if (ser.getRuleta() != null) {
-                    oos = new ObjectOutputStream(s.getOutputStream());
-                    oos.writeObject(ser.getRuleta());
-                    System.out.println("Ruleta enviada al cliente");
-                    oos.close();
-                }
-                }else{
-                    if(s.isConnected()){
-                    ois = new ObjectInputStream(s.getInputStream());
-                    System.out.println("Intento recibir un informe?");
-                CasinoInforme informe = (CasinoInforme) ois.readObject();
-                
-                System.out.println("Envie Informe");
 
-                if (informe != null) {
-                    
-                    System.out.println("Recibo informe del cliente");
-                    sisf.agregarRegistroTabla(informe);
-                    ois.close();
-                }
-                }
+                System.out.println("Se registro una conexion al server hola");
+
+                in = new DataInputStream(s.getInputStream());
+                String envio = in.readUTF();//Recibo el String del cliente si es 0 envio ruleta sino recibo informe 
+                if (envio.equals("0")) {
+                    System.out.println("Intento enviar ruleta al Cliente?");
+
+                    if (ser.getRuleta() != null) {
+                        oos = new ObjectOutputStream(s.getOutputStream());
+                        oos.writeObject(ser.getRuleta());
+                        System.out.println("Ruleta enviada al cliente");
+                        oos.close();
+                    }
+                } else {
+                    if (s.isConnected()) {
+                        ois = new ObjectInputStream(s.getInputStream());
+                        System.out.println("Intento recibir un informe?");
+                        CasinoInforme informe = (CasinoInforme) ois.readObject();
+
+                        System.out.println("Envie Informe");
+
+                        if (informe != null) {
+
+                            System.out.println("Recibo informe del cliente");
+                            sisf.agregarRegistroTabla(informe);
+                            ois.close();
+                        }
+                    }
                 }
                 System.out.println("El cliente se desconecto del server");
                 s.close();

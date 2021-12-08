@@ -1,4 +1,3 @@
-
 package Casino.Juegos.Ruleta.InterfazGrafica;
 
 import Casino.Juegos.Ruleta.Sockets.SocketServidor;
@@ -26,12 +25,10 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-
 public class ServidorInterfaz extends JFrame {
 
     private Ruleta r = new Ruleta();
 
-  
     public ServidorInterfaz() {
 
         initComponents();
@@ -48,49 +45,48 @@ public class ServidorInterfaz extends JFrame {
     private void leerArchivo() {
         long din = 0;
         FileInputStream informe = null;
-    
 
-            try {
-                informe = new FileInputStream("casinoinforme.txt");
-                if (informe != null) {
-                    ObjectInputStream casinoInforme = new ObjectInputStream(informe);
+        try {
+            informe = new FileInputStream("casinoinforme.txt");
+            if (informe != null) {
+                ObjectInputStream casinoInforme = new ObjectInputStream(informe);
 
-                    try{
-                        Object p;
-                    while ((p = casinoInforme.readObject()) instanceof CasinoInforme && p!=null) {
+                try {
+                    Object p;
+                    while ((p = casinoInforme.readObject()) instanceof CasinoInforme && p != null) {
                         System.out.println("Se esta viendo un registro");
 
                         System.out.println("La persona existe en archivo:" + (CasinoInforme) p);
                         agregarRegistroTabla((CasinoInforme) p);
                         din = ((CasinoInforme) p).getDineroCasino();
                     }
-                    }catch(EOFException ex){
-                        System.out.println("Se encontro fin de archivo");
-                    }
-                    
-
+                } catch (EOFException ex) {
+                    System.out.println("Se encontro fin de archivo");
                 }
-              
-            } catch(EOFException ex){
-              //Fin de archivo
-            }catch (FileNotFoundException ex) {
-                System.out.println("Error "+ex.getMessage());
-                //Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                  System.out.println("Error "+ex.getMessage());
-                //Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                  System.out.println("Error "+ex.getMessage());
-               // Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                if (informe != null) {
-                    try {
-                        informe.close();
-                    } catch (IOException ex) {
-                        Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+
+            }
+
+        } catch (EOFException ex) {
+            //Fin de archivo
+        } catch (FileNotFoundException ex) {
+            System.out.println("Error " + ex.getMessage());
+            //Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            System.out.println("Error " + ex.getMessage());
+            //Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Error " + ex.getMessage());
+            // Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (informe != null) {
+                try {
+                    informe.close();
+                } catch (IOException ex) {
+                    System.out.println("Error " + ex.getMessage());
+                    // Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+        }
 
         if (din > 0) {
             r.setDineroCasino(din);
@@ -108,7 +104,8 @@ public class ServidorInterfaz extends JFrame {
                 ci = new CasinoInforme((long) tabla.getValueAt(i, 0), (long) tabla.getValueAt(i, 1), (int) tabla.getValueAt(i, 2), fechas);
                 Aci.add(ci);
             } catch (ParseException ex) {
-                Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Error " + ex.getMessage());
+                // Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         Aci.forEach(System.out::println);
@@ -127,14 +124,17 @@ public class ServidorInterfaz extends JFrame {
 
                 }
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Error "+ex.getMessage());
+               // Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
-                Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Error "+ex.getMessage());
+               // Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 try {
                     informe.close();
                 } catch (IOException ex) {
-                    Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+                        System.out.println("Error "+ex.getMessage());
+                  //  Logger.getLogger(ServidorInterfaz.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -190,7 +190,7 @@ public class ServidorInterfaz extends JFrame {
         }
     }
 
-  //Metodo generado por Design
+    //Metodo generado por Design
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
